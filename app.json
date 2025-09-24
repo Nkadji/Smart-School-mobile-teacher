@@ -1,0 +1,46 @@
+{
+  "expo": {
+    "name": "duco",
+    "slug": "duco",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/logo.png",
+    "scheme": "duco",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/logo.png",
+        "backgroundImage": "./assets/logo.png",
+        "monochromeImage": "./assets/logo.png"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "package": "com.nkadji.duco"
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/logo.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/logo.png",
+          "imageWidth": 120,
+          "resizeMode": "contain",
+          "backgroundColor": "#007AFF"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}
