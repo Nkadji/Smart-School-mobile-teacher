@@ -14,7 +14,7 @@ const SaveBtn = ({ children }: SaveBtnProps) => {
     height:35,
     alignItems:'center',
     justifyContent:'center',
-    marginTop: 50,
+    marginBottom:23
     
     }}>
       <Text style={{fontSize:20, 

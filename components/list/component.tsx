@@ -15,7 +15,7 @@ const Components: React.FC<ComponentsProps> = ({ children }) => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "#f1f1f1ff",
+        backgroundColor: "#ecebf0ff",
         borderRadius: 10,
         padding: 12,
         paddingTop: 17,

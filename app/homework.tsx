@@ -10,7 +10,6 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { router } from 'expo-router';
 import HomeWorkElement from '@/components/list/hwList';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import HwForm from '@/components/form/addHw'; 
 import Components from '@/components/list/component';
 import Header  from '@/components/list/header';
 import HeaderText from '@/components/list/header-text';
@@ -79,15 +78,7 @@ const HomeWorkScreen = () => {
             </Components>
           ))}
           
-          
         </ScrollView>
-
-        <HwForm
-          visible={isModalVisible}
-          onClose={handleCloseModal}
-          onSubmit={handleSubmitForm}
-        />
-      
 
       <View style={styles.bottomNav}>
         <TouchableOpacity 
@@ -110,7 +101,7 @@ const HomeWorkScreen = () => {
         <TouchableOpacity 
         style={styles.navItem}
         onPress={() => router.navigate("/profil")}>
-          <Icon name="account-circle" size={24} color="#666" />
+          <Icon name="person" size={24} color="#666" />
           <Text style={styles.navText}>Profile</Text>
         </TouchableOpacity>
       </View>

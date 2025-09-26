@@ -7,7 +7,7 @@ interface CommentProps {
 }
 
 const Comment = ({ placeholder, style }: CommentProps) => { 
-  const [height, setHeight] = useState(45);
+  const [height, setHeight] = useState(70);
 
   return (
     <TextInput
@@ -15,7 +15,7 @@ const Comment = ({ placeholder, style }: CommentProps) => {
       placeholder={placeholder}
       multiline={true} 
       onContentSizeChange={(e) => {
-        setHeight(Math.max(45, e.nativeEvent.contentSize.height)); 
+        setHeight(Math.max(100, e.nativeEvent.contentSize.height)); 
       }}
     />
   );
@@ -24,8 +24,8 @@ const Comment = ({ placeholder, style }: CommentProps) => {
 const styles = StyleSheet.create({
   input: {
     borderWidth: 2,
-    borderColor: '#ddcee9ff',
-    borderRadius: 15,
+    borderColor: '#cacacaff',
+    borderRadius: 10,
     paddingHorizontal: 15,
     width: 300,
     textAlignVertical: 'top', 

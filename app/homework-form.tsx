@@ -25,17 +25,23 @@ const HomeWorkForm = () => {
   
   return (
     <View style={styles.container}>
-      
         <Header>
           <TouchableOpacity onPress={() => router.navigate('/homework')}>
             <MaterialIcons name='arrow-back-ios' size={20} color="#050505ff" style={ { fontWeight:"bold", marginTop: 20}}/>
           </TouchableOpacity>
           <HeaderText>New Homework</HeaderText>
         </Header>
-        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={styles.keyboardAvoidingView}>
+        <KeyboardAvoidingView
+            style={{ flex: 1 }}
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+          >
+            <ScrollView
+                    contentContainerStyle={styles.scrollContainer}
+                    keyboardShouldPersistTaps="handled"
+                  >
           <View style={{marginLeft: 20}}>
-            <TextLabel>Titre</TextLabel>
+
+            <TextLabel>Title</TextLabel>
             <TextIn placeholder='Enter your title'></TextIn>
 
             <TextLabel >Course</TextLabel>
@@ -54,6 +60,7 @@ const HomeWorkForm = () => {
               <SaveBtn >Save</SaveBtn>
             </TouchableOpacity>       
           </View>
+          </ScrollView>
         </KeyboardAvoidingView>
     </View>
   );
@@ -62,6 +69,11 @@ const HomeWorkForm = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: "center",
+    //paddingHorizontal: 20,
   },
   header: {
     flexDirection: 'row',
@@ -93,9 +105,9 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     justifyContent:'center',
     alignItems: 'flex-end',
-    paddingTop: 10,
+    //paddingTop: 10,
     marginRight:20,
-
+    marginTop:130,
   },
  
 });

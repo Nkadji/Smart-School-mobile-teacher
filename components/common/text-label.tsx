@@ -8,8 +8,8 @@ interface TextLabelProps {
 const TextLabel = ({ children}: TextLabelProps) => { 
   return (
     <View >
-      <Text style={{fontSize:17, 
-              color:'#020202ff', marginLeft: 10, marginTop: 15}}>
+      <Text style={{fontSize:13, fontWeight:'bold',
+              color:'#020202ff', marginLeft: 10, marginTop: 20}}>
             {children}
       </Text>
     </View>

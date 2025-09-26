@@ -137,9 +137,9 @@ const DashboardScreen = () => {
                     <View>
                         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
                             {todayLectures.map((lecture) =>(
-                            <View key={lecture.id} style= {{flexDirection: "row", zIndex:1000, width:'auto', height:'100%', borderRadius:1000 }}>
+                            <View key={lecture.id} style= {{flexDirection: "row", zIndex:1000,  height:'75%' }}>
                                     <TimeTableDay
-                                    style={{borderRadius:20, overflow:'hidden', width:220}}
+                                    style={{overflow:'hidden'}}
                                     title={lecture.title}
                                     startTime={lecture.startTime}
                                     endTime={lecture.endTime}
@@ -169,7 +169,7 @@ const DashboardScreen = () => {
                 </TouchableOpacity>
                 
                 <TouchableOpacity style={styles.navItem} onPress={() => router.navigate("/profil")}>
-                <Icon name="account-circle" size={24} color="#666" />
+                <Icon name="person" size={24} color="#666" />
                 <Text style={styles.navText}>Profile</Text>
                 </TouchableOpacity>
             </View>
@@ -225,7 +225,7 @@ const DashboardScreen = () => {
     sectionTitle: {
         fontSize: 18,
         fontWeight: '600',
-        color: '#57520bff',
+        color: '#0b4e57ff',
         marginLeft:10,
     },
     viewAllText: {
