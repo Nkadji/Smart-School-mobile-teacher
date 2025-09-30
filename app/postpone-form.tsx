@@ -26,10 +26,10 @@ const HomeWorkForm = () => {
   return (
     <View style={styles.container}>
         <Header>
-          <TouchableOpacity onPress={() => router.navigate('/homework')}>
+          <TouchableOpacity onPress={() => router.navigate('/postpone')}>
             <MaterialIcons name='arrow-back-ios' size={20} color="#050505ff" style={ { fontWeight:"bold", marginTop: 20}}/>
           </TouchableOpacity>
-          <HeaderText>New Homework</HeaderText>
+          <HeaderText>completed..</HeaderText>
         </Header>
 
           <KeyboardAvoidingView

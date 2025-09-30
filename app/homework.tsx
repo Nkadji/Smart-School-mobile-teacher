@@ -37,18 +37,28 @@ const HomeWorkScreen = () => {
       title: 'complex number',
       dueDate: '12 Oct. 2025',
       courseName: 'Math',
+      state: 'Pending',
     },
     {
         id: '2',
       title: 'Continuous assignment',
       dueDate: '12 Oct. 2025',
       courseName: 'Physics',
+      state: 'Pending',
     },
     {
         id: '3',
       title: 'Chapter 2',
       dueDate: '12 Oct. 2025',
       courseName: 'Data Science', 
+      state: 'Pending',
+    },
+    {
+        id: '4',
+      title: 'Chapter 1',
+      dueDate: '15 Oct. 2025',
+      courseName: 'Biology', 
+      state: 'completed',
     },
   ];
 
@@ -74,6 +84,7 @@ const HomeWorkScreen = () => {
                 courseName={hw.courseName}
                 dueDate={hw.dueDate}
                 title={hw.title}
+                state={hw.state}
               />
             </Components>
           ))}
@@ -155,7 +166,9 @@ const styles = StyleSheet.create({
     bottom:40,
     height: 100,
     width:'100%',
-    zIndex:1000
+    zIndex:1000,
+    borderTopWidth:1,
+    borderColor:'#e6e6e6ff'
         
   },
   navItem: {

@@ -49,10 +49,10 @@ const styles = StyleSheet.create({
   button: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: '#cacacaff',
     borderRadius: 10,
-    width: 300,
+    width: 325,
     height: 45,
     justifyContent: 'space-between',
     paddingHorizontal: 15,

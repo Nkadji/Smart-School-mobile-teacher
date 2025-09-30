@@ -8,19 +8,23 @@ interface SaveBtnProps {
 const SaveBtn = ({ children }: SaveBtnProps) => { 
   return (
     <View style={{
-    backgroundColor: '#1504ffff',
-    borderRadius:10,
-    width:270,
-    height:35,
+    borderRadius:7,
+    height:40,
+    width:320,
+    margin:60,
+    backgroundColor:'#0206fdff',
     alignItems:'center',
+    alignContent:'center',
+    borderColor:'#0206fdff',
+    borderWidth:1.5,
     justifyContent:'center',
-    marginBottom:23
+    marginBottom:-93
     
     }}>
       <Text style={{fontSize:20, 
       fontWeight:'bold',
         justifyContent:'center', 
-        color:'#ffffff',}}>
+        color:'#fcfcfdff',}}>
       {children}
       </Text>
     </View>

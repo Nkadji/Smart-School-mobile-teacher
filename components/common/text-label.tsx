@@ -9,7 +9,7 @@ const TextLabel = ({ children}: TextLabelProps) => {
   return (
     <View >
       <Text style={{fontSize:13, fontWeight:'bold',
-              color:'#020202ff', marginLeft: 10, marginTop: 20}}>
+              color:'#020202a6', paddingTop: 15, marginLeft:5}}>
             {children}
       </Text>
     </View>

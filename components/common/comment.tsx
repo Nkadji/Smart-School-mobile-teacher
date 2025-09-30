@@ -23,11 +23,11 @@ const Comment = ({ placeholder, style }: CommentProps) => {
 
 const styles = StyleSheet.create({
   input: {
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: '#cacacaff',
     borderRadius: 10,
     paddingHorizontal: 15,
-    width: 300,
+    width: 325,
     textAlignVertical: 'top', 
   },
 });

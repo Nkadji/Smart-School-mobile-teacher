@@ -20,12 +20,12 @@ const styles = StyleSheet.create({
      flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: '#cacacaff',
     borderRadius: 10,
     height: 45,
     paddingHorizontal: 15,
-    width:300,
+    width:325,
   },
 });
 

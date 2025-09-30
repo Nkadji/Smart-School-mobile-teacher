@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, FlatList, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity, ScrollView } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 
-import Header from "@/components/list/header";
-import HeaderText from "@/components/list/header-text";
 import RadioButtonStatus from "@/components/common/check-list";
 import CourseHeader from "@/components/common/attend-compo";
 
-type StatusType = "present" | "absent";
+type StatusType = "present" | "absent" | null;
 
 interface Student {
   id: string;
@@ -16,45 +14,34 @@ interface Student {
   niv: string;
   name: string;
   status: StatusType;
+  image: any;
 }
 
 const initialStudents: Student[] = [
-  { id: "1", course:"Maths", niv:"Cl1", name: " Kamga Alicein dousjaidjsoia", status: "present" },
-  { id: "2", course:"Maths", niv:"Cl1", name: " Tchonnang Bob", status: "absent" },
-  { id: "3", course:"Maths", niv:"Cl1", name: " Tiwa Charlie", status: "present" },
-  { id: "4", course:"Maths", niv:"Cl1", name: "Azapfah Diana", status: "present" },
-  { id: "5", course:"Maths", niv:"Cl1", name: "Kitio Ethan", status: "absent" },
-  { id: "6", course:"Maths", niv:"Cl1", name: " Tomba Fiona", status: "present" },
-  { id: "7", course:"Maths", niv:"Cl1", name: "Hodiep George", status: "absent" },
-  { id: "8", course:"Maths", niv:"Cl1", name: "Fokou Hannah", status: "present" },
+  { id: "1", course:"Maths", niv:"Cl1", name: "Kamga Atangana", status: "present", image:"./assets/nattes" },
+  { id: "2", course:"Maths", niv:"Cl1", name: "Tchonnang Djioe", status: "absent", image:"@/assets/nattes" },
+  { id: "3", course:"Maths", niv:"Cl1", name: "Tiwa Atangana", status: "present", image:"@/assets/nattes" },
+  { id: "4", course:"Maths", niv:"Cl1", name: "Azapfah Djiolim", status: "present", image:"@/assets/nattes" },
+  { id: "5", course:"Maths", niv:"Cl1", name: "Kitio Atangana", status: "absent", image:"@/assets/nattes" },
+  { id: "6", course:"Maths", niv:"Cl1", name: "Tomba Djiolime", status: "present", image:"@/assets/nattes" },
+  { id: "7", course:"Maths", niv:"Cl1", name: "Hodiep Atangana", status: "absent", image:"@/assets/nattes" },
+  { id: "8", course:"Maths", niv:"Cl1", name: "Fokou Djiolime", status: "present", image:"@/assets/nattes" },
 ];
 
 const ListAttendence = () => {
   const router = useRouter();
   const [students, setStudents] = useState(initialStudents);
 
-  const handleStatusChange = (id: string, status: "present" | "absent") => {
-    setStudents((prev) =>
-      prev.map((student) =>
-        student.id === id ? { ...student, status } : student
-      )
-    );
-  };
+  // const handleStatusChange = (id: string, status: "present" | "absent" | null) => {
+  //   setStudents((prev) =>
+  //     prev.map((student) =>
+  //       student.id === id ? { ...student, status } : student
+  //     )
+  //   );
+  // };
 
   return (
     <View style={{ flex: 1 }}>
-      {/* Header */}
-      <Header>
-        <TouchableOpacity onPress={() => router.push("/dashboard")}>
-          <MaterialIcons
-            name="arrow-back-ios"
-            size={20}
-            color="#050505ff"
-            style={{ fontWeight: "bold", marginTop: 20 }}
-          />
-        </TouchableOpacity>
-        <HeaderText>Attendence </HeaderText>
-      </Header>
 
       {/* Contenu avec ScrollView */}
       <ScrollView 
@@ -65,18 +52,18 @@ const ListAttendence = () => {
       >
         
           <View style={styles.tableContainer}>
-            <Text style={styles.title}>List of Attendence</Text>
 
             {/* En-tête du tableau */}
             <View style={styles.tableHeader}>
-                <View style={[styles.headerCell, styles.nameColumn]}>
+                {/* <View style={[styles.headerCell, styles.nameColumn]}>
                 <Text style={styles.headerText}>Specification</Text>
-              </View>
+              </View> */}
               <View style={[styles.headerCell, styles.nameColumn]}>
-                <Text style={styles.headerText}>Nom</Text>
+                <Text style={styles.headerText}>Student</Text>
               </View>
               <View style={[styles.headerLast, styles.presentColumn]}>
-                <Text style={styles.headerText}>Pres  Abs</Text>
+                <Text style={styles.headerText}>Present</Text>
+                <Text style={styles.headerText}>Absent</Text>
               </View>
             </View>
 
@@ -86,22 +73,23 @@ const ListAttendence = () => {
                 <View key={item.id} style={styles.tableRow}>
                     {/* Colonne Specification */}
                     <View style={styles.bodyCell}>
+                    <Image source={require('@/assets/nattes.png')} style={{ width: 35, height: 35, marginRight:5, borderRadius: 20 }} />
+                    </View>
+                  {/* Colonne Nom */}
+                  <View style={[styles.bodyCell, styles.nameColumn, {paddingHorizontal:80}]}>
+                    <Text style={styles.cellText}>{item.name}</Text>
                     <CourseHeader 
                         course={item.course} 
                         niv={item.niv} 
                         day="11/03/2025" 
                     />
-                    </View>
-                  {/* Colonne Nom */}
-                  <View style={[styles.bodyCell, styles.nameColumn]}>
-                    <Text style={styles.cellText}>{item.name}</Text>
                   </View>
                   
                   {/* Colonne RadioButton Present */}
-                  <View style={[styles.bodyLast, styles.presentColumn]}>
+                  <View style={[styles.bodyCell, styles.presentColumn]}>
                     <RadioButtonStatus
                       status={item.status}
-                      onChange={(newStatus) => handleStatusChange(item.id, newStatus)}
+                      onChange={(newStatus) => null}
                       containerStyle={styles.radioContainer}
                       textStyle={styles.radioText}
                     />
@@ -130,7 +118,6 @@ const styles = StyleSheet.create({
     minWidth: "100%",
   },
   tableContainer: {
-    padding: 20,
     minWidth: 400, // Largeur minimale pour assurer un bon affichage
   },
   title: {
@@ -159,43 +146,37 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   headerCell: {
-    paddingHorizontal: 8,
+    paddingHorizontal: 1,
     justifyContent: "center",
     alignItems: "center",
     borderRightWidth: 1,
     borderColor: "#ddd",
   },
    headerLast: {
-    paddingHorizontal: 8,
-    justifyContent: "center",
+    justifyContent:'space-between',
     alignItems: "center",
-    //borderRightWidth: 1,
-    //borderColor: "#ddd",
+    flexDirection:'row',
+    marginLeft: 30,
+  
+    
   },
   bodyCell: {
-    paddingHorizontal: 8,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRightWidth: 1,
+    paddingLeft: 8,
+     justifyContent: "center",
+    //  alignItems: "center",
+    //borderRightWidth: 1,
     borderColor: "#eee",
     minHeight: 50,
   },
-  bodyLast: {
-    paddingHorizontal: 8,
-    justifyContent: "center",
-    alignItems: "center",
-    //borderRightWidth: 1,
-    //borderColor: "#eee",
-    minHeight: 50,
-  },
   headerText: {
-    fontSize: 15,
+    fontSize: 12,
     fontWeight: "bold",
     textAlign: "center",
   },
   cellText: {
     fontSize: 14,
-    textAlign: "center",
+    fontWeight:'bold',
+    //textAlign: "center",
   },
   statusText: {
     fontSize: 14,
@@ -216,23 +197,19 @@ const styles = StyleSheet.create({
   },
   radioContainer: {
     flexDirection: "row",
-    justifyContent: "center",
+    //justifyContent: "center",
     alignItems: "center",
+    marginLeft:-50,
+    paddingLeft: 8,
   },
   radioText: {
     fontWeight: "bold",
   },
   // Définition des largeurs de colonnes
   nameColumn: {
-    width: 110,
-  },
-  statusColumn: {
-    width: 100,
+    width: 200,
   },
   presentColumn: {
-    width: 100,
-  },
-  absentColumn: {
-    width: 100,
+    width: 90,
   },
 });

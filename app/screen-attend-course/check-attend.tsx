@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import { View, Text, FlatList, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
+import { View, Text, FlatList,Image, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import { useRouter } from "expo-router";
 
-import Header from "@/components/list/header";
-import HeaderText from "@/components/list/header-text";
-import RadioButtonStatus from "@/components/common/check-list";
-import CourseHeader from "@/components/common/attend-compo";
 
-type StatusType = "present" | "absent";
+import RadioButtonStatus from "@/components/common/check-list";
+import Dropdown from "@/components/common/dropdown";
+import SaveBtn from "@/components/common/saveBtn";
+
+type StatusType = "present" | "absent" | null;
 
 interface Student {
   id: string;
@@ -16,24 +15,26 @@ interface Student {
   niv: string;
   name: string;
   status: StatusType;
+  image: any;
 }
 
 const initialStudents: Student[] = [
-  { id: "1", course:"Maths", niv:"Cl1", name: " Kamga Alicein dousjaidjsoia", status: "present" },
-  { id: "2", course:"Maths", niv:"Cl2", name: " Tchonnang Bob", status: "absent" },
-  { id: "3", course:"Maths", niv:"Cl1", name: " Tiwa Charlie", status: "present" },
-  { id: "4", course:"Maths", niv:"Cl3", name: "Azapfah Diana", status: "present" },
-  { id: "5", course:"Maths", niv:"Cl1", name: "Kitio Ethan", status: "absent" },
-  { id: "6", course:"Maths", niv:"Cl2", name: " Tomba Fiona", status: "present" },
-  { id: "7", course:"Maths", niv:"Cl2", name: "Hodiep George", status: "absent" },
-  { id: "8", course:"Maths", niv:"Cl3", name: "Fokou Hannah", status: "present" },
+  { id: "1", course:"Maths", niv:"Cl1", name: " Kamga Alice", status: null, image:"./assets/nattes" },
+  { id: "2", course:"Maths", niv:"Cl2", name: " Tchonnang Bob", status: null, image:"./assets/nattes" },
+  { id: "3", course:"Maths", niv:"Cl1", name: " Tiwa Charlie", status: null, image:"./assets/nattes" },
+  { id: "4", course:"Maths", niv:"Cl3", name: "Azapfah Diana", status: null, image:"./assets/nattes" },
+  { id: "5", course:"Maths", niv:"Cl1", name: "Kitio Ethan", status: null, image:"./assets/nattes" },
+  { id: "6", course:"Maths", niv:"Cl2", name: " Tomba Fiona", status: null, image:"./assets/nattes" },
+  { id: "7", course:"Maths", niv:"Cl2", name: "Hodiep George", status: null, image:"./assets/nattes" },
+  { id: "8", course:"Maths", niv:"Cl3", name: "Fokou Hannah", status: null, image:"./assets/nattes" },
+  { id: "1", course:"Maths", niv:"Cl1", name: "Gongang Frederic", status: null, image:"./assets/nattes" },
 ];
 
 const CheckAttendence = () => {
   const router = useRouter();
   const [students, setStudents] = useState(initialStudents);
 
-  const handleStatusChange = (id: string, status: "present" | "absent") => {
+  const handleStatusChange = (id: string, status: "present" | "absent" |null) => {
     setStudents((prev) =>
       prev.map((student) =>
         student.id === id ? { ...student, status } : student
@@ -43,19 +44,7 @@ const CheckAttendence = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      {/* Header */}
-      <Header>
-        <TouchableOpacity onPress={() => router.push("/dashboard")}>
-          <MaterialIcons
-            name="arrow-back-ios"
-            size={20}
-            color="#050505ff"
-            style={{ fontWeight: "bold", marginTop: 20 }}
-          />
-        </TouchableOpacity>
-        <HeaderText>Attendence </HeaderText>
-      </Header>
-
+      
       {/* Contenu avec ScrollView */}
       <ScrollView 
         style={styles.scrollContainer}
@@ -63,25 +52,18 @@ const CheckAttendence = () => {
         showsVerticalScrollIndicator={true}
         horizontal={false}
       >
-        {/* Conteneur horizontal pour le défilement horizontal */}
-        <ScrollView 
-          horizontal={true} 
-          showsHorizontalScrollIndicator={true}
-          contentContainerStyle={styles.horizontalScrollContent}
-        >
+        
           <View style={styles.tableContainer}>
-            <Text style={styles.title}>List of Attendence</Text>
-
+            <Dropdown style={{width:20, alignItems:'center', borderColor:"#f30b0bff"}} options={['Math/Cl1', 'Math/Cl2', 'Math/Cl3']} />
             {/* En-tête du tableau */}
             <View style={styles.tableHeader}>
-                <View style={[styles.headerCell, styles.nameColumn]}>
-                <Text style={styles.headerText}>Specification</Text>
-              </View>
+              
               <View style={[styles.headerCell, styles.nameColumn]}>
-                <Text style={styles.headerText}>Nom</Text>
+                <Text style={styles.headerText}>Student</Text>
               </View>
-              <View style={[styles.headerCell, styles.presentColumn]}>
-                <Text style={styles.headerText}>Attendence</Text>
+              <View style={[styles.headerLast, styles.presentColumn]}>
+                <Text style={styles.headerText}>Present</Text>
+                <Text style={styles.headerText}>Absent</Text>
               </View>
             </View>
 
@@ -89,21 +71,16 @@ const CheckAttendence = () => {
             <View style={styles.tableBody}>
               {students.map((item) => (
                 <View key={item.id} style={styles.tableRow}>
-                    {/* Colonne Specification */}
-                    <View style={styles.bodyCell}>
-                    <CourseHeader 
-                        course={item.course} 
-                        niv={item.niv} 
-                        day="11/03/2025" 
-                    />
-                    </View>
                   {/* Colonne Nom */}
+                  <View style={styles.bodyCell}>
+                <Image source={require('@/assets/nattes.png')} style={{ width: 35, height: 35, borderRadius: 20 }} />
+              </View>
                   <View style={[styles.bodyCell, styles.nameColumn]}>
                     <Text style={styles.cellText}>{item.name}</Text>
                   </View>
                   
                   {/* Colonne RadioButton Present */}
-                  <View style={[styles.bodyCell, styles.presentColumn]}>
+                  <View style={[styles.bodyLast, styles.presentColumn]}>
                     <RadioButtonStatus
                       status={item.status}
                       onChange={(newStatus) => handleStatusChange(item.id, newStatus)}
@@ -111,13 +88,15 @@ const CheckAttendence = () => {
                       textStyle={styles.radioText}
                     />
                   </View>
-                  
                 </View>
+
               ))}
             </View>
+            <TouchableOpacity style={{margin:-15,marginLeft:-38}} onPress={() => router.replace('../attendenceCourse')}>
+              <SaveBtn >Save</SaveBtn>
+            </TouchableOpacity>  
           </View>
         </ScrollView>
-      </ScrollView>
     </View>
   );
 };
@@ -136,14 +115,7 @@ const styles = StyleSheet.create({
     minWidth: "100%",
   },
   tableContainer: {
-    padding: 20,
     minWidth: 400, // Largeur minimale pour assurer un bon affichage
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-    marginBottom: 20,
-    //textAlign: "center",
   },
   tableHeader: {
     flexDirection: "row",
@@ -168,25 +140,34 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     justifyContent: "center",
     alignItems: "center",
-    borderRightWidth: 1,
     borderColor: "#ddd",
+  },
+  headerLast: {
+    alignItems: "center",
+    flexDirection:'row',
+    justifyContent:'space-between'
   },
   bodyCell: {
     paddingHorizontal: 8,
     justifyContent: "center",
-    alignItems: "center",
-    borderRightWidth: 1,
-    borderColor: "#eee",
+    //alignItems: "center",
     minHeight: 50,
   },
+  bodyLast: {
+    minHeight: 50,
+    marginLeft:-52,
+    alignItems:'center',
+    justifyContent: "center",
+  },
   headerText: {
-    fontSize: 15,
+    fontSize: 10,
     fontWeight: "bold",
-    textAlign: "center",
+    //textAlign: "center",
+    justifyContent:'space-between',
   },
   cellText: {
     fontSize: 14,
-    textAlign: "center",
+    //textAlign: "center",
   },
   statusText: {
     fontSize: 14,
@@ -209,21 +190,16 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+    
   },
   radioText: {
     fontWeight: "bold",
   },
   // Définition des largeurs de colonnes
   nameColumn: {
-    width: 110,
-  },
-  statusColumn: {
-    width: 100,
+    width: '55%',
   },
   presentColumn: {
-    width: 100,
-  },
-  absentColumn: {
-    width: 100,
+    width: '25%',
   },
 });

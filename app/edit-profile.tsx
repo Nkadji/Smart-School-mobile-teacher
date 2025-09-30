@@ -63,9 +63,9 @@ const Profil = () =>  {
           <View style={styles.avatarContainer}>
               <Image
               source={require('@/assets/nattes.png')}
-              style={{width:140, height:140, borderRadius:70, borderWidth: 3, borderColor: "#fff"}}/>
+              style={{width:140, height:140, borderRadius:70, borderWidth: 1, borderColor: "#0206fdff"}}/>
               <TouchableOpacity onPress={pickImage}>
-                  <MaterialIcons name='add-a-photo' size={25} color="#b8b7b7ff" style={ { fontWeight:'bold', marginTop: -25, marginLeft: 80}}/>
+                  <MaterialIcons name='add-a-photo' size={25} color="#989affff" style={ { fontWeight:'bold', marginTop: -25, marginLeft: 80}}/>
               </TouchableOpacity>
           </View>
           

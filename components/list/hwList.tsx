@@ -7,13 +7,10 @@ interface HomeWorkProps{
     title: string;
     dueDate: string;
     courseName: string;
+    state: any;
 }
-const HomeWorkElement: React.FC<HomeWorkProps>=({title, dueDate, courseName })=>{
-    // const formattedDate = dueDate.toLocaleDateString("fr-FR", {
-    // day: "2-digit",
-    // month: "2-digit",
-    // year: "numeric",
-    // });
+const HomeWorkElement: React.FC<HomeWorkProps>=({title, dueDate, courseName,  state })=>{
+    
     return(
         <View >
             
@@ -26,7 +23,7 @@ const HomeWorkElement: React.FC<HomeWorkProps>=({title, dueDate, courseName })=>
                     <Text style={styles.text}>{dueDate}</Text>
                 </View>
 
-                <Text style={styles.etat}>Pending</Text>
+                <Text style={styles.etat}>{state}</Text>
             </View>
 
         </View>

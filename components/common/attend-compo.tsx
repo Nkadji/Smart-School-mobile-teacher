@@ -23,21 +23,21 @@ export default CourseHeader;
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
-    marginVertical: 12,
+   // alignItems: "center",
+    marginVertical: 0,
   },
   topText: {
-    fontSize: 18,
+    fontSize: 9,
     color: "#222",
   },
   separator: {
-    marginVertical: 6,
-    height: 1,
-    width: "60%",
+    marginVertical: 0.1,
+    
+    
     backgroundColor: "#ccc",
   },
   bottomText: {
-    fontSize: 16,
+    fontSize: 9,
     color: "#444",
     fontWeight: "bold",
   },

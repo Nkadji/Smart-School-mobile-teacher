@@ -1,17 +1,18 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, ViewStyle, StyleSheet, StyleProp } from 'react-native';
 
 interface DropdownProps {
   options: string[];
+  style?: StyleProp<ViewStyle>;
 }
 
-const Dropdown = ({ options }: DropdownProps) => {
+const Dropdown = ({ options, style }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState(options[0]);
 
   return (
-    <View style={styles.container}>
+    <View >
       <TouchableOpacity 
         style={styles.header}
         onPress={() => setIsOpen(!isOpen)}
@@ -42,17 +43,18 @@ const Dropdown = ({ options }: DropdownProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: 300,
+    width: 325,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: '#cacacaff',
     borderRadius: 10,
     height: 45,
     paddingHorizontal: 15,
+    width: 325,
   },
   options: {
     borderWidth: 2,

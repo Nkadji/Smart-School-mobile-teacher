@@ -20,8 +20,9 @@ export default function RootLayout() {
         <Stack.Screen name="swap" options={{headerShown: false}}/>
         <Stack.Screen name="timetable" options={{headerShown: false}}/>
         <Stack.Screen name="profil" options={{headerShown: false}}/>
-        <Stack.Screen name="edit-profil" options={{headerShown: false}}/>
+        <Stack.Screen name="postpone-form" options={{headerShown: false}}/>
         <Stack.Screen name="homework-form" options={{headerShown: false}}/>
+        <Stack.Screen name="check-hw-list" options={{headerShown: false}}/>
     </Stack>
     </GestureHandlerRootView>
   );
