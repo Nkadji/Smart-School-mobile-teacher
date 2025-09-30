@@ -15,12 +15,14 @@ export default function RootLayout() {
         <Stack.Screen name="attendenceCourse" options={{headerShown: false}}/>
         <Stack.Screen name="checkHomework" options={{headerShown: false}}/>
         <Stack.Screen name="leave" options={{headerShown: false}}/>
+        <Stack.Screen name="leave-form" options={{headerShown: false}}/>
         <Stack.Screen name="plannedCourse" options={{headerShown: false}}/>
         <Stack.Screen name="postpone" options={{headerShown: false}}/>
+        <Stack.Screen name="postpone-form" options={{headerShown: false}}/>
         <Stack.Screen name="swap" options={{headerShown: false}}/>
+        <Stack.Screen name="swap-form" options={{headerShown: false}}/>
         <Stack.Screen name="timetable" options={{headerShown: false}}/>
         <Stack.Screen name="profil" options={{headerShown: false}}/>
-        <Stack.Screen name="postpone-form" options={{headerShown: false}}/>
         <Stack.Screen name="homework-form" options={{headerShown: false}}/>
         <Stack.Screen name="check-hw-list" options={{headerShown: false}}/>
     </Stack>

@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   headerText: {
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: "bold",
     //textAlign: "center",
     justifyContent:'space-between',

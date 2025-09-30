@@ -41,7 +41,7 @@ const DashboardScreen = () => {
 
   const gridItems = [
     { id: '0', icon: 'view-timeline', title: 'Time Table', color: '#009688', route:'/timeTable' },
-    { id: '1', icon: 'checklist-rtl', title: 'Attendence by Class', color: '#F44336', route:'/attendenceClass' },
+    { id: '1', icon: 'assignment', title: 'Homework', color: '#F44336', route:'/homework' },
     { id: '2', icon: 'auto-stories', title: 'Attendance by Course', color: '#9C27B0', route:'./screen-attend-course/attendenceCourse' },
     { id: '3', icon: 'assignment-turned-in', title: 'Check Homework', color: '#1177b3', route:'/checkHomework' },
     { id: '4', icon: 'assessment', title: 'Registered Course', color: '#aa90e6', route:'/registeredCourse'},

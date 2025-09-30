@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#cacacaff',
     borderRadius: 10,
-    width: 325,
+    width: 280,
     height: 45,
     justifyContent: 'space-between',
     paddingHorizontal: 15,

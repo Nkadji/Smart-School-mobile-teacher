@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   View,
-  Text,
   TouchableOpacity,
   StyleSheet,
   ScrollView,
@@ -10,22 +9,19 @@ import {
 } from 'react-native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { router } from 'expo-router';
-import Header  from '@/components/list/header';
+import Header from '@/components/list/header';
 import HeaderText from '@/components/list/header-text';
-import TextIn from '@/components/common/textInput';
 import TextLabel from '@/components/common/text-label';
 import Dropdown from '@/components/common/dropdown';
-import FileInput from '@/components/common/file-import';
 import DatePicker from '@/components/common/date';
 import Comment from '@/components/common/comment';
 import SaveBtn from '@/components/common/saveBtn';
 
-const HomeWorkForm = () => { 
-
+const LeaveForm = () => { 
   return (
     <View style={styles.container}>
       <Header>
-        <TouchableOpacity onPress={() => router.navigate('/homework')}>
+        <TouchableOpacity onPress={() => router.navigate('/leave')}>
           <MaterialIcons 
             name='arrow-back-ios' 
             size={24} 
@@ -33,7 +29,7 @@ const HomeWorkForm = () => {
             style={styles.backIcon} 
           />
         </TouchableOpacity>
-        <HeaderText>New Homework</HeaderText>
+        <HeaderText>Leave request</HeaderText>
       </Header>
 
       <KeyboardAvoidingView
@@ -45,25 +41,36 @@ const HomeWorkForm = () => {
           keyboardShouldPersistTaps="handled"
         >
           <View style={styles.formCard}>
-            <TextLabel>Title</TextLabel>
-              <TextIn placeholder='Enter your title'></TextIn>
+            <TextLabel>Leave type</TextLabel>
+            <Dropdown 
+              style={styles.dropdown} 
+              options={[
+                'Malade', 
+                'Pregnancy', 
+                'deuil',
+              ]} 
+            />
 
-              <TextLabel >Course</TextLabel>
-              <Dropdown style={{width:200}}options={['Math', 'Physique', 'Informatique']} />
+            <TextLabel>Leave charakter</TextLabel>
+            <Dropdown 
+              style={styles.dropdown} 
+              options={[
+              ]} 
+            />
 
-              <TextLabel >File</TextLabel>
-              <FileInput onFileSelect={(file) => console.log(file)} />
+            <TextLabel>Start Date</TextLabel>
+            <DatePicker onDateSelect={(date) => console.log(date)} />
 
-              <TextLabel >Due Date</TextLabel>
-              <DatePicker onDateSelect={(date) => console.log(date)} />
-                
-              <TextLabel >Comment</TextLabel>
-              <Comment placeholder="Your comment..." /> 
+            <TextLabel>End Date</TextLabel>
+            <DatePicker onDateSelect={(date) => console.log(date)} />
+
+            <TextLabel>Description</TextLabel>
+            <Comment placeholder="Your description..." />
           </View>
 
           <TouchableOpacity 
             style={styles.save} 
-            onPress={() => router.replace("/homework")}
+            onPress={() => router.replace("/leave")}
           >
             <SaveBtn>Save</SaveBtn>
           </TouchableOpacity> 
@@ -72,7 +79,6 @@ const HomeWorkForm = () => {
     </View>
   );
 };
-  
 
 const styles = StyleSheet.create({
   container: {
@@ -112,4 +118,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeWorkForm;
+export default LeaveForm;

@@ -10,15 +10,13 @@ const SaveBtn = ({ children }: SaveBtnProps) => {
     <View style={{
     borderRadius:7,
     height:40,
-    width:320,
-    margin:60,
-    backgroundColor:'#0206fdff',
+    width:330,
+    backgroundColor:'#0267ffff',
     alignItems:'center',
     alignContent:'center',
-    borderColor:'#0206fdff',
+    borderColor:'#0267ffff',
     borderWidth:1.5,
     justifyContent:'center',
-    marginBottom:-93
     
     }}>
       <Text style={{fontSize:20, 

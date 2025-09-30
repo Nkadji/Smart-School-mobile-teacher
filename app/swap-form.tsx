@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   View,
-  Text,
   TouchableOpacity,
   StyleSheet,
   ScrollView,
@@ -10,22 +9,20 @@ import {
 } from 'react-native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { router } from 'expo-router';
-import Header  from '@/components/list/header';
+import Header from '@/components/list/header';
 import HeaderText from '@/components/list/header-text';
-import TextIn from '@/components/common/textInput';
 import TextLabel from '@/components/common/text-label';
 import Dropdown from '@/components/common/dropdown';
-import FileInput from '@/components/common/file-import';
 import DatePicker from '@/components/common/date';
 import Comment from '@/components/common/comment';
 import SaveBtn from '@/components/common/saveBtn';
+import TimeInput from '@/components/common/time-input';
 
-const HomeWorkForm = () => { 
-
+const SwapForm = () => { 
   return (
     <View style={styles.container}>
       <Header>
-        <TouchableOpacity onPress={() => router.navigate('/homework')}>
+        <TouchableOpacity onPress={() => router.navigate('/swap')}>
           <MaterialIcons 
             name='arrow-back-ios' 
             size={24} 
@@ -33,7 +30,7 @@ const HomeWorkForm = () => {
             style={styles.backIcon} 
           />
         </TouchableOpacity>
-        <HeaderText>New Homework</HeaderText>
+        <HeaderText>Swap Class</HeaderText>
       </Header>
 
       <KeyboardAvoidingView
@@ -45,25 +42,39 @@ const HomeWorkForm = () => {
           keyboardShouldPersistTaps="handled"
         >
           <View style={styles.formCard}>
-            <TextLabel>Title</TextLabel>
-              <TextIn placeholder='Enter your title'></TextIn>
+            <TextLabel>My Course</TextLabel>
+            <Dropdown 
+              style={styles.dropdown} 
+              options={[
+                'Mathematics-2025-08-02', 
+                'Mathematics-2025-08-03', 
+                'Mathematics-2025-08-04',
+                'Mathematics-2025-08-09', 
+                'Physique-2025-08-10', 
+                'Physics-2025-08-11'
+              ]} 
+            />
 
-              <TextLabel >Course</TextLabel>
-              <Dropdown style={{width:200}}options={['Math', 'Physique', 'Informatique']} />
+            <TextLabel>Other Course</TextLabel>
+            <Dropdown 
+              style={styles.dropdown} 
+              options={[
+                'Music-2025-08-02', 
+                'Physique-2025-08-03', 
+                'Informatique-2025-08-04',
+                'Sport-2025-08-09', 
+                'Physique-2025-08-10', 
+                'Chemestry-2025-08-11'
+              ]} 
+            />
 
-              <TextLabel >File</TextLabel>
-              <FileInput onFileSelect={(file) => console.log(file)} />
-
-              <TextLabel >Due Date</TextLabel>
-              <DatePicker onDateSelect={(date) => console.log(date)} />
-                
-              <TextLabel >Comment</TextLabel>
-              <Comment placeholder="Your comment..." /> 
+            <TextLabel>Comment</TextLabel>
+            <Comment placeholder="Your comment..." />
           </View>
 
           <TouchableOpacity 
             style={styles.save} 
-            onPress={() => router.replace("/homework")}
+            onPress={() => router.replace("/swap")}
           >
             <SaveBtn>Save</SaveBtn>
           </TouchableOpacity> 
@@ -72,7 +83,6 @@ const HomeWorkForm = () => {
     </View>
   );
 };
-  
 
 const styles = StyleSheet.create({
   container: {
@@ -106,10 +116,12 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   save: {
-    paddingVertical:50,
+    paddingVertical:150,
     paddingHorizontal: 50,
     alignSelf: 'center',
   },
 });
 
-export default HomeWorkForm;
+export default SwapForm;
+
+

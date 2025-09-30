@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { View, Text, FlatList,Image, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import { useRouter } from "expo-router";
+import { MaterialIcons } from "@expo/vector-icons";
 
 
 import RadioButtonStatus from "@/components/common/check-list";
-import Dropdown from "@/components/common/dropdown";
 import SaveBtn from "@/components/common/saveBtn";
 
 type StatusType = "present" | "absent" | null;
@@ -27,7 +27,11 @@ const initialStudents: Student[] = [
   { id: "6", course:"Maths", niv:"Cl2", name: " Tomba Fiona", status: null, image:"./assets/nattes" },
   { id: "7", course:"Maths", niv:"Cl2", name: "Hodiep George", status: null, image:"./assets/nattes" },
   { id: "8", course:"Maths", niv:"Cl3", name: "Fokou Hannah", status: null, image:"./assets/nattes" },
-  { id: "1", course:"Maths", niv:"Cl1", name: "Gongang Frederic", status: null, image:"./assets/nattes" },
+  { id: "9", course:"Maths", niv:"Cl1", name: "Gongang Frederic", status: null, image:"./assets/nattes" },
+  { id: "10", course:"Maths", niv:"Cl2", name: " Tomba Fiona", status: null, image:"./assets/nattes" },
+  { id: "11", course:"Maths", niv:"Cl2", name: "Hodiep George", status: null, image:"./assets/nattes" },
+  { id: "12", course:"Maths", niv:"Cl3", name: "Fokou Hannah", status: null, image:"./assets/nattes" },
+  { id: "13", course:"Maths", niv:"Cl1", name: "Gongang Frederic", status: null, image:"./assets/nattes" },
 ];
 
 const CheckAttendence = () => {
@@ -42,6 +46,45 @@ const CheckAttendence = () => {
     );
   };
 
+  interface DropdownProps {
+  options: string[];
+  
+}
+
+const Dropdown = ({ options }: DropdownProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState(options[0]);
+
+  return (
+    <View >
+      <TouchableOpacity 
+        style={styles.header}
+        onPress={() => setIsOpen(!isOpen)}
+      >
+        <Text>{selected}</Text>
+        <MaterialIcons name='expand-more' size={30} color='#666'/>
+      </TouchableOpacity>
+
+      {isOpen && (
+        <View style={styles.options}>
+          {options.map((option, index) => (
+            <TouchableOpacity
+              key={index}
+              style={styles.option}
+              onPress={() => {
+                setSelected(option);
+                setIsOpen(false);
+              }}
+            >
+              <Text>{option}</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+      )}
+    </View>
+  );
+};
+
   return (
     <View style={{ flex: 1 }}>
       
@@ -54,8 +97,8 @@ const CheckAttendence = () => {
       >
         
           <View style={styles.tableContainer}>
-            <Dropdown style={{width:20, alignItems:'center', borderColor:"#f30b0bff"}} options={['Math/Cl1', 'Math/Cl2', 'Math/Cl3']} />
-            {/* En-tête du tableau */}
+            <Dropdown options={['Mathematics/Class 1', 'Mathematics/Class 2', 'Mathematics/Class5']} />
+
             <View style={styles.tableHeader}>
               
               <View style={[styles.headerCell, styles.nameColumn]}>
@@ -92,7 +135,7 @@ const CheckAttendence = () => {
 
               ))}
             </View>
-            <TouchableOpacity style={{margin:-15,marginLeft:-38}} onPress={() => router.replace('../attendenceCourse')}>
+            <TouchableOpacity style={styles.save} onPress={() => router.replace('../attendenceCourse')}>
               <SaveBtn >Save</SaveBtn>
             </TouchableOpacity>  
           </View>
@@ -107,6 +150,10 @@ const styles = StyleSheet.create({
   scrollContainer: {
     flex: 1,
     backgroundColor: "#fff",
+  },
+  dropdown: {
+    width: 300,
+    marginBottom: 15,
   },
   scrollContent: {
     flexGrow: 1,
@@ -160,7 +207,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   headerText: {
-    fontSize: 10,
+    fontSize: 13,
     fontWeight: "bold",
     //textAlign: "center",
     justifyContent:'space-between',
@@ -201,5 +248,38 @@ const styles = StyleSheet.create({
   },
   presentColumn: {
     width: '25%',
+  },
+  save: {
+     paddingVertical:80,
+     marginRight: 40,
+    alignSelf: 'center',
+  },
+
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: 45,
+    paddingHorizontal: 15,
+    width: 365,
+    borderTopWidth: 1,
+    borderColor: '#d3d3d3ff',
+
+  },
+  options: {
+    position:'absolute',
+    zIndex:1000,
+    borderWidth: 2,
+    borderColor: '#d3d3d3ff',
+    backgroundColor:'#fffefeff',
+    borderTopWidth: 1,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    width:365,
+  },
+  option: {
+    padding: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: '#d3d3d3ff',
   },
 });

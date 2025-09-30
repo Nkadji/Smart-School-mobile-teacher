@@ -10,8 +10,8 @@ const HeaderText = ({ children }: HeaderTextProps) => {
     <Text style={{fontSize: 20,
     fontWeight: 'bold',
     color: '#080808ff',
-    marginRight:150,
-    marginTop: 20}}>
+    marginRight:100,
+    marginTop: 15}}>
       {children}
     </Text>
   );
